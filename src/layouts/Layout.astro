@@ -1,4 +1,6 @@
 ---
+import { Navbar } from "../components/index";
+
 interface Props {
 	title: string;
 }
@@ -17,34 +19,248 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<Navbar />
 		<slot />
 	</body>
 </html>
 <style is:global>
+	@font-face {
+		font-family: "Author";
+		src: url("./src/assets/fonts/Author-Variable.woff2") format("woff2");
+		font-weight: 200 700;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Author";
+		src: url("./src/assets/fonts/Author-VariableItalic.woff2")
+			format("woff2");
+		font-weight: 200 700;
+		font-display: swap;
+		font-style: italic;
+	}
+
+	@font-face {
+		font-family: "Grimoire";
+		src: url("./src/assets/fonts/Grimoire.ttf") format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Summer-Friday";
+		src: url("./src/assets/fonts/Summerfriday-K73eD.otf") format("opentype");
+		font-weight: 400 700;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "ClashDisplay";
+		src: url("./src/assets/fonts/ClashDisplay-Light.woff2") format("woff2");
+		font-weight: 300 900;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "ClashDisplay-Variable";
+		src: url("./src/assets/fonts/ClashDisplay-Variable.woff2")
+			format("woff2");
+		font-weight: 200 700;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Trash-Hand";
+		src: url("./src/assets/fonts/TrashHand.TTF") format("truetype");
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Mutter-Krause";
+		src: url("./src/assets/fonts/MutterKrause-7oMD.ttf") format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Tooney";
+		src: url("./src/assets/fonts/TooneyNoodleNf-685o.ttf")
+			format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Wickhop";
+		src: url("./src/assets/fonts/WickhopHandwriting.ttf") format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Underground";
+		src: url("./src/assets/fonts/Underground.ttf") format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Tail-Free";
+		src: url("./src/assets/fonts/TrailFree.ttf") format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Death-Squad";
+		src: url("./src/assets/fonts/DeathSquad.ttf") format("truetype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Qumpellkano";
+		src: url("./src/assets/fonts/Qumpellkano.otf") format("opentype");
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Adventure";
+		src: url("./src/assets/fonts/Adventure.otf") format("opentype");
+		font-display: swap;
+		font-style: oblique;
+	}
+
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
+		--background: #121216;
+		--white: #eeeeee;
+		--purple-heart-50: #edf0ff;
+		--purple-heart-100: #dfe2ff;
+		--purple-heart-200: #c5caff;
+		--purple-heart-300: #a1a5ff;
+		--purple-heart-400: #807cfd;
+		--purple-heart-500: #6e5df7;
+		--purple-heart-600: #5f3fec;
+		--purple-heart-700: #5333d1;
+		--purple-heart-800: #422ba8;
+		--purple-heart-900: #3a2a85;
+		--purple-heart-950: #23194d;
+		--link-color: #5184d1;
+		--pop-background-color: #d46bc3;
+		--pop-border-color: #a263ef;
+		--pop-font-color: #fdf6f6;
+		--pop-fontborder-color: #ceccd8;
+		--metal-background-color: #080808;
+		--metal-border-color: #000000;
+		--metal-font-color: #d3d3d3;
+		--metal-fontborder-color: #8b1818;
+		--kpop-background-color: #5a2fa8;
+		--kpop-font-color: #dfdfdf;
+		--kpop-border-color: #1a0e86;
+		--kpop-fontborder-color: #d2c5e9;
+		--dubstep-background-color: #0e1c3a;
+		--dubstep-font-color: #578cff;
+		--dubstep-border-color: #92aaf7;
+		--dubstep-fontboder-color: #0b7191;
+		--rap-background-color: #6d6c6c;
+		--rap-border-color: #0e0c0c;
+		--rap-font-color: #720909;
+		--rap-fontborder-color: #c51515;
+		--randb-background-color: #0e0c0c;
+		--randb-font-color: #ffffff;
+		--randb-border-color: #000000;
+		--randb-fontborder-color: #ffffff;
+	}
+
+	*:link,
+	*:visited {
+		color: inherit;
+	}
+
+	*::-webkit-scrollbar {
+		background-color: var(--background);
+		width: 12px;
+	}
+
+	*::-webkit-scrollbar-thumb {
+		background-color: var(--background);
+		border-radius: 1ex;
+		border: 2px solid var(--purple-heart-700);
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	img,
+	video,
+	canvas,
+	audio,
+	iframe,
+	embed,
+	object {
+		display: block;
+		height: auto;
+		max-width: 100%;
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		position: relative;
+		width: 100%;
+		min-height: 100dvh;
+		font-family: "Author", sans-serif;
+		color: var(--white);
+		background-color: var(--background);
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-position: 0px 0px;
+		background: linear-gradient(
+			220.55deg,
+			var(--purple-heart-950) 0%,
+			var(--purple-heart-700) 100%
 		);
+		text-decoration: none;
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	body::after {
+		content: "";
+		position: absolute;
+		z-index: 999;
+		inset: 0;
+		background: url("./src/assets/images/noise.png") repeat;
+		opacity: 0.7;
+		pointer-events: none;
 	}
 </style>

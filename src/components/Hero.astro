@@ -1,0 +1,72 @@
+---
+
+---
+
+<div>
+	<div class="hero__container">
+		<h1 class="title">Mixify</h1>
+		<h2 class="subtitle">Create your own mixtape by your Spotify Stats!</h2>
+	</div>
+	<button id="signin">
+		Sign In
+	</button>
+</div>
+
+<script>
+	import { clientId, code } from '../utils/params.js';
+	import { redirectToAuthCodeFlow } from '../scripts/index.js';
+
+	const signInButton = document.getElementById('signin');
+	signInButton.addEventListener('click', () => {
+		if (!code) return redirectToAuthCodeFlow(clientId);
+	});
+</script>
+
+<style>
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	div > .hero__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	div > .hero__container > .title {
+		font-size: 10rem;
+		font-weight: 700;
+		letter-spacing: 5px;
+	}
+
+	div > .hero__container > .subtitle {
+		font-size: 1.2rem;
+		font-weight: 300;
+		letter-spacing: 1px;
+	}
+
+	div > #signin {
+		width: 5.5em;
+		padding: 0.8em;
+		border-radius: 20px;
+		background-color: transparent;
+		border: 1px solid var(--purple-heart-400);
+		font-size: 2rem;
+		font-weight: 600;
+		letter-spacing: 1px;
+		color: var(--white);
+		cursor: pointer;
+		margin: 2.5em;
+		font-family: 'Author', sans-serif;
+	}
+
+	div > #signin:hover {
+		border: 1px solid transparent;
+		color: var(--white);
+		background-color: var(--purple-heart-700);
+	}
+</style>
