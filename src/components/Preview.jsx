@@ -1,7 +1,7 @@
 import useClientStats from "src/hooks/fetchSpotify.jsx";
 import { clientId, code } from "../utils/params.js";
 
-export const Preview = () => {
+const Preview = () => {
 	const [ data ] = useClientStats(clientId, code);
 	const filteredData = data.metrics[metric][term];
 	const username = data.user;
@@ -45,3 +45,5 @@ export const Preview = () => {
 		</div>
 	)
 };
+
+export default Preview;

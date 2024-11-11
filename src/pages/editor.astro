@@ -1,9 +1,9 @@
 ---
 import Layout from "src/layouts/Layout.astro";
 import { EditorMenu } from "../components/index.js";
-import { Preview } from '../components/index.js';
+import Preview from '../components/Preview.jsx';
 ---
 <Layout title="Editor">
-	<Preview />
+	<Preview client:only/>
 	<EditorMenu />
 </Layout>
